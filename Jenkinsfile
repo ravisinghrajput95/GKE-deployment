@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage("Code checkout"){
             steps{
-                git credentialsId: 'github', url: 'https://github.com/ravisinghrajput95/GKE-deployment.git'
+                git branch: 'main', git credentialsId: 'github', url: 'https://github.com/ravisinghrajput95/GKE-deployment.git'
             }
         }
         
