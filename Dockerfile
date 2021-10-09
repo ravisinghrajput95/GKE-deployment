@@ -2,7 +2,7 @@ FROM node:latest
 ENV NODE_ENV="production"
 
 # Copy app's source code to the /app directory
-COPY app /app
+COPY /app /app
 
 # The application's directory will be the working directory
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN npm install
 
 FROM node:latest
 ENV NODE_ENV="production"
-COPY --from=builder app /app
+COPY --from=builder /app /app
 WORKDIR /app
 ENV PORT 5000
 EXPOSE 5000
