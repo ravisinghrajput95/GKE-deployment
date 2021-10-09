@@ -1,4 +1,4 @@
-FROM 16-alpine3.11
+FROM node:16-alpine3.11
 ENV NODE_ENV="production"
 
 # Copy app's source code to the /app directory
@@ -10,7 +10,7 @@ WORKDIR /app
 # Install Node.js dependencies defined in '/app/packages.json'
 RUN npm install
 
-FROM 16-alpine3.11
+FROM node:16-alpine3.11
 ENV NODE_ENV="production"
 COPY --from=builder /app /app
 WORKDIR /app
