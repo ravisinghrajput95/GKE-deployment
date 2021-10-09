@@ -12,7 +12,7 @@ RUN npm install
 
 FROM node:latest
 ENV NODE_ENV="production"
-COPY --from=builder /app /app
+COPY --from=builder app /app
 WORKDIR /app
 ENV PORT 5000
 EXPOSE 5000
