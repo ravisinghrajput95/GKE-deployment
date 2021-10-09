@@ -1,42 +1,39 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello
-  labels:
-    app: hello
 spec:
-  replicas: 2
   selector:
     matchLabels:
       app: hello
-  strategy:
-    type: Recreate
   template:
     metadata:
       labels:
         app: hello
-        tier: hello
     spec:
       containers:
       - name: hello
         image: rajputmarch2020/hello:latest
         imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
         ports:
         - containerPort: 5000
-          name: hello
 
 ---
 apiVersion: v1
 kind: Service
 metadata:
-name: hello
-labels:
-  app: hello
+  name: hello
+  labels:
+    app: hello
 spec:
-ports:
+  ports:
   - port: 5000
     targetPort: 5000
-selector:
-  app: hello
-  tier: hello
-type: LoadBalancer
+  selector:
+    app: hello
+  type: LoadBalancer
