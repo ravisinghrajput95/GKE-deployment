@@ -1,4 +1,4 @@
-FROM node:16-alpine3.11
+FROM node:16-alpine3.11 as builder
 ENV NODE_ENV="production"
 
 # Copy app's source code to the /app directory
